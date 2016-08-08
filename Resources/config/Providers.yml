@@ -1,0 +1,26 @@
+services:
+
+    #
+    # Factory
+    #
+
+    mailer.factory:
+        class : Acilia\Bundle\MailerBundle\Service\MailerService
+        tags :
+            - { name: mailer.factory }
+
+
+    #
+    # Providers
+    #
+
+    mailer.provider.smart_focus:
+        class : Acilia\Bundle\MailerBundle\Library\Providers\SmartFocusProvider
+        tags :
+            - { name: mailer.provider }
+
+    mailer.provider.swift_mailer:
+        class : Acilia\Bundle\MailerBundle\Library\Providers\SwiftMailerProvider
+        arguments: ["@mailer"]
+        tags :
+            - { name: mailer.provider }
